@@ -132,6 +132,69 @@ nav {
   gap: 4px;
 }
 
+.nav-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nav-toggle:hover {
+  background: var(--surface-3);
+}
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 99;
+}
+
+.nav-dropdown.open {
+  display: flex;
+}
+
+.nav-dropdown a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.nav-dropdown a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.nav-dropdown a.active {
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+@media (max-width: 640px) {
+  nav { display: none; }
+  .nav-toggle { display: flex; }
+  nav.open .nav-dropdown { display: flex; }
+}
+
 nav a {
   font-size: 13px;
   font-weight: 500;
@@ -183,6 +246,18 @@ nav a.active {
   font-weight: 500;
   color: var(--text-2);
   font-variant-numeric: tabular-nums;
+}
+
+.header-datetime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.header-calendar {
+  font-size: 12px;
+  color: var(--text-3);
 }
 
 /* Main */
@@ -502,6 +577,79 @@ footer p {
   padding: 16px 0;
 }
 
+.clock-display.small {
+  padding: 0;
+}
+
+.datetime-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.clock-display.small .clock-time {
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.calendar-display {
+  text-align: left;
+}
+
+
+.calendar-display .clock-date {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 0;
+}
+
+/* Market Status */
+.market-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-bottom: 24px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-3);
+}
+
+.market-status.open .status-dot {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s infinite;
+}
+
+.market-status.closed .status-dot {
+  background: var(--text-3);
+}
+
+.status-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+
+.dashboard-card.compact {
+  padding: 16px 24px;
+}
+
 .clock-time {
   font-size: clamp(36px, 8vw, 56px);
   font-weight: 600;
@@ -663,11 +811,21 @@ footer p {
     <nav>
       <a href="#" class="active" onclick="showSection('dashboard')">Dashboard</a>
       <a href="#" onclick="showSection('archive')">Archive</a>
-      <a href="#" onclick="showSection('portfolio')">Portfolio</a>
       <a href="#" onclick="showSection('analysis')">Analysis</a>
+      <a href="#" onclick="showSection('portfolio')">Portfolio</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" onclick="toggleNav()">☰</button>
+    <div class="nav-dropdown" id="navDropdown">
+      <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+      <a href="#" onclick="showSection('archive')">Archive</a>
+      <a href="#" onclick="showSection('analysis')">Analysis</a>
+      <a href="#" onclick="showSection('portfolio')">Portfolio</a>
+    </div>
     <div class="header-right">
-      <div class="live-clock" id="liveClock">--:--</div>
+      <div class="header-datetime">
+        <span class="live-clock" id="liveClock">--:--</span>
+        <span class="header-calendar" id="headerCalendar">---</span>
+      </div>
       <button class="theme-btn" onclick="toggleTheme()">
         <span id="themeIcon">☀️</span>
       </button>
@@ -686,12 +844,22 @@ footer p {
         <p>Real-time data, insights, and your conversation archive.</p>
       </div>
       
-      <!-- Live Clock & Date -->
-      <div class="dashboard-card">
-        <div class="clock-display">
-          <div class="clock-time" id="clockTime">--:--:--</div>
-          <div class="clock-date" id="clockDate">Loading...</div>
+      <!-- Live Clock & Calendar -->
+      <div class="dashboard-card compact">
+        <div class="datetime-row">
+          <div class="clock-display small">
+            <div class="clock-time" id="clockTime">--:--:--</div>
+          </div>
+          <div class="calendar-display">
+            <div class="clock-date" id="clockDate">Loading...</div>
+          </div>
         </div>
+      </div>
+      
+      <!-- Live Market Status -->
+      <div class="market-status" id="marketStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Markets Closed</span>
       </div>
       
       <!-- Crypto Prices -->
