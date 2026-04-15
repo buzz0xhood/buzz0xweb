@@ -788,6 +788,143 @@ footer p {
   background: var(--accent);
 }
 
+/* Chart Card */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.chart-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 16px;
+}
+
+/* Pie Chart */
+.pie-chart {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.pie-svg {
+  width: 120px;
+  height: 120px;
+}
+
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.legend-item .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Progress Bars */
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Insights Grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.insight-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.insight-item h5 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.insight-item p {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* Vimeo Link */
+.vimeo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.vimeo-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.vimeo-link svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -1233,22 +1370,21 @@ footer p {
     <!-- Portfolio Section -->
     <section id="portfolio-section" style="display: none;">
       <div class="hero">
-        <div class="subtitle">Portfolio</div>
-        <h1>My Work</h1>
-        <p>Videos, projects, and creative work from vimeo.com/hudaachmad</p>
+        <div class="subtitle">Creative Work</div>
+        <h1>Portfolio</h1>
+        <p>Videos, projects, and creative work</p>
       </div>
       
-      <div class="portfolio-section">
-        <h3>Huda Achmad</h3>
-        <p>vimeo.com/hudaachmad</p>
-        <div class="portfolio-embed">
-          <iframe src="https://player.vimeo.com/hudaachmad" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
+      <a href="https://vimeo.com/hudaachmad" target="_blank" class="vimeo-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.977 6.416c-.105 2.338-1.73 5.55-4.874 9.632-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.876L5.622 11.8C4.816 9.152 4.266 8.04 3.938 7.113c-.49-1.394-.645-2.16-.578-2.895.103-1.14.685-1.706 1.638-1.706.588-.015 1.363.262 2.328.818 3.37 1.892 6.423 4.508 9.139 7.847 2.268 2.786 3.432 4.96 3.485 6.52.017.41.026.664.017.767-.026.33-.182.495-.455.495-.166 0-.411-.148-.736-.458-.663-.65-1.157-1.6-1.483-2.854-.326-1.254-.66-2.65-1.005-4.19-.687-2.855-1.444-4.28-2.277-4.28-.155 0-.347.035-.577.097-.58.209-1.028.76-1.356 1.67-.33.9-.492 1.813-.492 2.738 0 .987.155 1.64.466 1.95.31.31.726.47 1.245.47.95 0 1.784-.573 2.506-1.716.71-1.157 1.08-2.407 1.08-3.75 0-1.855-.64-3.46-1.92-4.81-.85-.903-1.877-1.36-3.087-1.36-1.215 0-2.185.533-2.92 1.594-.59.865-.88 2.02-.88 3.454 0 1.352.27 2.37.81 3.053.54.69 1.235 1.032 2.075 1.032.78 0 1.51-.425 2.2-1.278.685-.856 1.042-1.94 1.042-3.252V9.18c.138-2.105-.56-3.16-2.09-3.16-.752 0-1.51.353-2.254 1.065-1.14 1.095-1.732 2.73-1.732 4.85 0 3.225 1.17 5.41 3.51 6.55 1.504.75 2.74.905 3.71.45 1.257-.596 1.914-1.745 1.97-3.45.076-2.27-.72-3.96-2.36-5.06-.63-.42-1.19-.637-1.67-.637-.5 0-.91.23-1.217.69-.307.45-.465 1.08-.465 1.87 0 .66.154 1.19.465 1.57.31.39.706.58 1.18.58.62 0 1.156-.33 1.6-.98.45-.66.68-1.52.68-2.59v-.66c-.03-.13-.03-.25-.03-.37 0-.14-.013-.28-.03-.42.05-2.08.69-3.09 1.93-3.09.95 0 1.64.56 2.04 1.67.41 1.1.62 2.47.62 4.11v3.21c0 1.29.19 2.19.55 2.69.37.5.91.75 1.63.75.88 0 1.71-.54 2.47-1.62.76-1.08 1.14-2.42 1.14-4.01z"/>
+        </svg>
+        View My Work on Vimeo
+      </a>
       
       <div class="summary-card">
         <h3>About This Section</h3>
-        <p>Portfolio embeds from Vimeo. You can add more sections here for different types of work - video reels, case studies, client work, etc.</p>
+        <p>Creative portfolio showcasing video projects, case studies, and client work.</p>
       </div>
     </section>
     
@@ -1263,6 +1399,26 @@ footer p {
       <div class="section">
         <div class="section-header">
           <span class="section-title">Business Ideas</span>
+        </div>
+        
+        <!-- Revenue Projection Chart -->
+        <div class="chart-card">
+          <h4>Revenue Model Breakdown</h4>
+          <div class="pie-chart">
+            <svg viewBox="0 0 100 100" class="pie-svg">
+              <!-- Subscriptions 40% -->
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--accent)" stroke-width="20" stroke-dasharray="100.53 150.79" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+              <!-- Affiliate 35% -->
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--purple)" stroke-width="20" stroke-dasharray="87.96 163.36" stroke-dashoffset="-100.53" transform="rotate(-90 50 50)"/>
+              <!-- One-time 25% -->
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--green)" stroke-width="20" stroke-dasharray="62.83 188.49" stroke-dashoffset="-188.49" transform="rotate(-90 50 50)"/>
+            </svg>
+            <div class="pie-legend">
+              <span class="legend-item"><span class="dot" style="background: var(--accent)"></span>Subscriptions 40%</span>
+              <span class="legend-item"><span class="dot" style="background: var(--purple)"></span>Affiliate 35%</span>
+              <span class="legend-item"><span class="dot" style="background: var(--green)"></span>One-time 25%</span>
+            </div>
+          </div>
         </div>
         
         <div class="summary-card">
@@ -1328,6 +1484,78 @@ footer p {
         <p><strong>Best next step:</strong> Weekly Digest Automation (low effort, 3-5 days) + Daily Reflection Journal (slow living, no pressure).</p>
         <p style="margin-top: 8px;"><strong>Reality check:</strong> Pick ONE thing, execute for 2 weeks minimum before changing direction.</p>
       </div>
+      
+      <!-- Insights Grid -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Key Insights</span>
+        </div>
+        <div class="insights-grid">
+          <div class="insight-item">
+            <h5>💡 Pattern Detected</h5>
+            <p>High curiosity, low focus. Tendency to chase new ideas before executing existing ones.</p>
+          </div>
+          <div class="insight-item">
+            <h5>⚡ Contradiction</h5>
+            <p>Wants profit but prioritizes security first. Need to find balance between risk and opportunity.</p>
+          </div>
+          <div class="insight-item">
+            <h5>🎯 Strategic Input</h5>
+            <p>Start with LST yield monitoring — low risk, measurable returns, builds momentum.</p>
+          </div>
+          <div class="insight-item">
+            <h5>📊 Business Projection</h5>
+            <p>Conservative IDR 5-10M/month in year 1 with subscription + affiliate model.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Goals Progress -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Goals Progress</span>
+        </div>
+        <div class="summary-card">
+          <div class="progress-bars">
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>LST Research</span>
+                <span>75%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%; background: var(--green);"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Website Dashboard</span>
+                <span>60%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%; background: var(--accent);"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Polymarket Bot</span>
+                <span>20%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%; background: var(--purple);"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Business Plan</span>
+                <span>35%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 35%; background: var(--yellow);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     
     <footer>
@@ -1355,12 +1583,26 @@ function updateClock() {
   const now = new Date();
   const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
   const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const shortDate = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   document.getElementById('clockTime').textContent = timeStr;
   document.getElementById('clockDate').textContent = dateStr;
   document.getElementById('liveClock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+  document.getElementById('headerCalendar').textContent = shortDate;
+  
+  // Market status
+  const hour = now.getUTCHours();
+  const marketEl = document.getElementById('marketStatus');
+  const isMarketOpen = hour >= 14 && hour < 21; // NYSE: 9:30 AM - 4 PM ET
+  marketEl.className = 'market-status ' + (isMarketOpen ? 'open' : 'closed');
+  marketEl.querySelector('.status-text').textContent = isMarketOpen ? 'Markets Open' : 'Markets Closed';
 }
 updateClock();
 setInterval(updateClock, 1000);
+
+function toggleNav() {
+  document.getElementById('navToggle').classList.toggle('open');
+  document.getElementById('navDropdown').classList.toggle('open');
+}
 
 // Navigation
 function showSection(name) {
@@ -1370,7 +1612,13 @@ function showSection(name) {
   document.getElementById('analysis-section').style.display = 'none';
   document.getElementById(name + '-section').style.display = 'block';
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  event.target.classList.add('active');
+  document.querySelectorAll('.nav-dropdown a').forEach(a => a.classList.remove('active'));
+  // Find and activate the clicked link
+  const clickedLink = event.target;
+  clickedLink.classList.add('active');
+  // Close mobile nav if open
+  document.getElementById('navDropdown').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('open');
 }
 
 // Crypto Prices
