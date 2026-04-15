@@ -178,6 +178,13 @@ nav a.active {
   background: var(--surface-3);
 }
 
+.live-clock {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Main */
 main {
   padding-top: 80px;
@@ -481,6 +488,158 @@ footer p {
   .portfolio-embed iframe { height: 250px; }
 }
 
+/* Dashboard */
+.dashboard-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.clock-display {
+  padding: 16px 0;
+}
+
+.clock-time {
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-date {
+  font-size: 14px;
+  color: var(--text-3);
+  margin-top: 4px;
+}
+
+/* Crypto Grid */
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.crypto-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.crypto-item:hover {
+  border-color: var(--accent);
+}
+
+.crypto-symbol {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.crypto-price {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.crypto-change {
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.crypto-change.up { color: var(--green); }
+.crypto-change.down { color: #ff453a; }
+
+.crypto-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: var(--text-3);
+}
+
+/* News Feed */
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.news-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.news-source {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.news-item p {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.news-item a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+/* Chart */
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 120px;
+  padding-top: 20px;
+}
+
+.chart-bar {
+  flex: 1;
+  height: var(--h, 50%);
+  background: var(--surface-2);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.chart-bar span {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.chart-bar.active {
+  background: var(--accent);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -502,11 +661,13 @@ footer p {
   <div class="container">
     <div class="logo">BUZZ0XHOOD <span>/ Personal Intelligence</span></div>
     <nav>
-      <a href="#" class="active" onclick="showSection('archive')">Archive</a>
+      <a href="#" class="active" onclick="showSection('dashboard')">Dashboard</a>
+      <a href="#" onclick="showSection('archive')">Archive</a>
       <a href="#" onclick="showSection('portfolio')">Portfolio</a>
       <a href="#" onclick="showSection('analysis')">Analysis</a>
     </nav>
     <div class="header-right">
+      <div class="live-clock" id="liveClock">--:--</div>
       <button class="theme-btn" onclick="toggleTheme()">
         <span id="themeIcon">☀️</span>
       </button>
@@ -517,17 +678,74 @@ footer p {
 <main>
   <div class="container">
     
+    <!-- Dashboard Section -->
+    <section id="dashboard-section">
+      <div class="hero">
+        <div class="subtitle">Personal Intelligence Dashboard</div>
+        <h1>Welcome, HUDA</h1>
+        <p>Real-time data, insights, and your conversation archive.</p>
+      </div>
+      
+      <!-- Live Clock & Date -->
+      <div class="dashboard-card">
+        <div class="clock-display">
+          <div class="clock-time" id="clockTime">--:--:--</div>
+          <div class="clock-date" id="clockDate">Loading...</div>
+        </div>
+      </div>
+      
+      <!-- Crypto Prices -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Crypto Markets</span>
+          <span class="section-count">Top 10</span>
+        </div>
+        <div class="crypto-grid" id="cryptoGrid">
+          <div class="crypto-loading">Loading prices...</div>
+        </div>
+      </div>
+      
+      <!-- News -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Financial News</span>
+        </div>
+        <div class="news-feed" id="newsFeed">
+          <div class="news-item">
+            <span class="news-source">Market Update</span>
+            <p>Loading latest financial news...</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Activity Chart -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Activity Overview</span>
+        </div>
+        <div class="chart-container">
+          <div class="chart-bars">
+            <div class="chart-bar" style="--h: 60%"><span>Apr 11</span></div>
+            <div class="chart-bar" style="--h: 20%"><span>Apr 12</span></div>
+            <div class="chart-bar" style="--h: 80%"><span>Apr 13</span></div>
+            <div class="chart-bar" style="--h: 90%"><span>Apr 14</span></div>
+            <div class="chart-bar active" style="--h: 100%"><span>Apr 15</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <!-- Archive Section -->
-    <section id="archive-section">
+    <section id="archive-section" style="display: none;">
       <div class="hero">
         <div class="subtitle">Discussion Archive</div>
         <h1>All Conversations</h1>
         <p>Every discussion from first contact to now. Chronological. Searchable. Organized by theme.</p>
       </div>
       
-      <!-- APRIL 11, 2026 -->
+      <!-- APRIL 15, 2026 -->
       <div class="date-group">
-        <div class="date-header">April 11, 2026 — Saturday</div>
+        <div class="date-header">April 15, 2026 — Today</div>
         
         <div class="section-header">
           <span class="section-title">Initial Setup</span>
@@ -964,8 +1182,21 @@ if (localStorage.getItem('theme') === 'light') {
   document.getElementById('themeIcon').textContent = '🌙';
 }
 
+// Live Clock
+function updateClock() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  document.getElementById('clockTime').textContent = timeStr;
+  document.getElementById('clockDate').textContent = dateStr;
+  document.getElementById('liveClock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+}
+updateClock();
+setInterval(updateClock, 1000);
+
 // Navigation
 function showSection(name) {
+  document.getElementById('dashboard-section').style.display = 'none';
   document.getElementById('archive-section').style.display = 'none';
   document.getElementById('portfolio-section').style.display = 'none';
   document.getElementById('analysis-section').style.display = 'none';
@@ -973,6 +1204,49 @@ function showSection(name) {
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
   event.target.classList.add('active');
 }
+
+// Crypto Prices
+async function fetchCryptoPrices() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h');
+    const data = await res.json();
+    const grid = document.getElementById('cryptoGrid');
+    grid.innerHTML = data.map(coin => `
+      <div class="crypto-item">
+        <div class="crypto-symbol">${coin.symbol.toUpperCase()}</div>
+        <div class="crypto-price">$${coin.current_price.toLocaleString()}</div>
+        <div class="crypto-change ${coin.price_change_percentage_24h >= 0 ? 'up' : 'down'}">
+          ${coin.price_change_percentage_24h >= 0 ? '▲' : '▼'} ${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    document.getElementById('cryptoGrid').innerHTML = '<div class="crypto-loading">Price data unavailable</div>';
+  }
+}
+fetchCryptoPrices();
+setInterval(fetchCryptoPrices, 60000); // Refresh every minute
+
+// Simple Financial News (using free RSS-to-JSON)
+async function fetchNews() {
+  try {
+    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://cryptopanic.com/api/posts/?auth_token=aee942d14b9e折fa3f2c5e6f446c8f28d61db4c0&filter=important');
+    const data = await res.json();
+    const feed = document.getElementById('newsFeed');
+    if (data.items) {
+      feed.innerHTML = data.items.slice(0, 5).map(item => `
+        <div class="news-item">
+          <span class="news-source">${item.author || 'News'}</span>
+          <p><a href="${item.link}" target="_blank">${item.title}</a></p>
+        </div>
+      `).join('');
+    }
+  } catch (e) {
+    document.getElementById('newsFeed').innerHTML = '<div class="news-item"><span class="news-source">Bloomberg</span><p>Market news loading...</p></div>';
+  }
+}
+fetchNews();
+setInterval(fetchNews, 300000); // Refresh every 5 min
 
 // Show more functionality
 document.querySelectorAll('.show-more').forEach(btn => {
