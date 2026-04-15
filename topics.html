@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics | HUDA W/ AI</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🤝</span>
+            <span class="brand-text">HUDA W/ AI</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+            <li><a href="topics.html" class="active"><i class="fas fa-folder"></i> Topics</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="chat.html" class="nav-chat"><i class="fas fa-comment"></i> Chat</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleMobileNav()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <header class="page-header">
+        <h1><i class="fas fa-folder-open"></i> Topics</h1>
+        <p>All conversation topics organized by category</p>
+        <p class="last-updated">Last updated: April 15, 2026 06:00 AM</p>
+    </header>
+
+    <main class="topics-container">
+        <!-- Trading & Bots -->
+        <section class="topics-category" id="solana-trading-bot">
+            <h2 class="category-title"><i class="fas fa-robot"></i> HUDA W/ AI Bot</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>AI Trading Agent Setup</h4>
+                    <p>Project structure, Python implementation, DexScreener integration</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 14 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 13-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>DexScreener Scanner</h4>
+                    <p>Real-time token tracking, red/green flags detection</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 8 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 13-14</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>Jupiter vs GMGN Research</h4>
+                    <p>Jupiter for bot execution, GMGN for manual trading UI</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 4 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 13</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Airdrop Farming -->
+        <section class="topics-category" id="airdrop-farming">
+            <h2 class="category-title"><i class="fas fa-gift"></i> Airdrop Farming</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>Protocol Research</h4>
+                    <p>Finding protocols that haven't tokenized yet but worth farming</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 8 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>Eligibility Strategy</h4>
+                    <p>Multi-wallet approach, activity patterns, timing</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 5 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LST Yield Research -->
+        <section class="topics-category" id="lst-yield">
+            <h2 class="category-title"><i class="fas fa-chart-line"></i> LST Yield Research</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>JitoSOL</h4>
+                    <p>~5-7% APY via Jito Network. High yield, newer protocol.</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-percentage"></i> 5-7% APY</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>mSOL (Marinade)</h4>
+                    <p>~4-6% APY. Established, reliable staking.</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-percentage"></i> 4-6% APY</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>bSOL (BlazeStake)</h4>
+                    <p>~3-5% APY. Binance ecosystem staking.</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-percentage"></i> 3-5% APY</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>stSOL (Lido)</h4>
+                    <p>~3-5% APY. Most established LST protocol.</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-percentage"></i> 3-5% APY</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Polymarket -->
+        <section class="topics-category" id="polymarket">
+            <h2 class="category-title"><i class="fas fa-chart-pie"></i> Polymarket Analysis</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>Trading Bot Development</h4>
+                    <p>Signal detection, automatic trading strategies</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 5 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>Market Research</h4>
+                    <p>Analyzing prediction market trends and opportunities</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 3 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Ideas -->
+        <section class="topics-category" id="business-ideas">
+            <h2 class="category-title"><i class="fas fa-briefcase"></i> Business Ideas</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>Profit Target: IDR 30M/month</h4>
+                    <p>Business analysis and profit generation strategies</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 4 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>Validation Strategy</h4>
+                    <p>Quick wins, low-cost experiments, ROI assessment</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-message"></i> 2 messages</span>
+                        <span><i class="fas fa-clock"></i> Apr 14</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-Agents -->
+        <section class="topics-category" id="sub-agents">
+            <h2 class="category-title"><i class="fas fa-users"></i> Sub-Agents</h2>
+            <div class="topic-items">
+                <div class="topic-item">
+                    <h4>buzzweb</h4>
+                    <p>Website/archive specialist for Telegram conversation analysis</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-robot"></i> Archive Expert</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>buzzpoly</h4>
+                    <p>Polymarket analysis & trading bot developer</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-robot"></i> Trading Bot</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <h4>buzzbiz</h4>
+                    <p>Business analysis & profit generation specialist</p>
+                    <div class="topic-stats">
+                        <span><i class="fas fa-robot"></i> Biz Strategy</span>
+                        <span><i class="fas fa-clock"></i> Apr 14-15</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>HUDA W/ AI · Built with ❤️ by HUDA W/ AI</p>
+            <p class="footer-meta">Session: April 13-15, 2026 · All rights reserved</p>
+        </div>
+    </footer>
+
+    <div class="floating-chat" onclick="openChatModal()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-content">
+            <div class="chat-modal-header">
+                <span><i class="fas fa-robot"></i> Chat with HUDA W/ AI</span>
+                <button class="chat-close" onclick="closeChatModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-modal-body">
+                <iframe src="chat.html" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

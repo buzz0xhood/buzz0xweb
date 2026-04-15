@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | Solana Trading Archive</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🤝</span>
+            <span class="brand-text">HUDA W/ AI</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+            <li><a href="topics.html"><i class="fas fa-folder"></i> Topics</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="chat.html" class="active nav-chat"><i class="fas fa-comment"></i> Chat</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleMobileNav()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <main class="chat-container">
+        <aside class="chat-sidebar">
+            <div class="sidebar-header">Chat History</div>
+            <div class="chat-history-list" id="chatHistoryList">
+                <div class="chat-history-item active" onclick="loadChatSession('today')">
+                    Today · Apr 15
+                </div>
+                <div class="chat-history-item" onclick="loadChatSession('yesterday')">
+                    Yesterday · Apr 14
+                </div>
+                <div class="chat-history-item" onclick="loadChatSession('april13')">
+                    April 13
+                </div>
+            </div>
+            <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <button class="btn btn-secondary" style="width: 100%; font-size: 13px;" onclick="clearChatHistory()">
+                    <i class="fas fa-trash"></i> Clear History
+                </button>
+            </div>
+        </aside>
+
+        <section class="chat-main">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome message -->
+                <div class="chat-message ai">
+                    <div class="chat-message-avatar">🤝</div>
+                    <div class="chat-message-content">
+                        Halo Sir buzz0xhood! 👋<br><br>
+                        Saya HUDA W/ AI, your Solana ecosystem assistant. Ada yang bisa saya bantu hari ini?<br><br>
+                        Topics yang available:<br>
+                        • <strong>Solana Trading Bot</strong> - Setup, DexScreener, Jupiter integration<br>
+                        • <strong>Airdrop Farming</strong> - Protocol research, eligibility<br>
+                        • <strong>LST Yield</strong> - JitoSOL, mSOL, bSOL comparisons<br>
+                        • <strong>Polymarket</strong> - Trading strategies<br>
+                        • <strong>Business Ideas</strong> - IDR 30M/month target<br><br>
+                        Atau tanya apa aja! 🚀
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <textarea 
+                    id="chatInput" 
+                    class="chat-input" 
+                    placeholder="Type your message... (Press Enter to send)"
+                    rows="1"
+                ></textarea>
+                <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/chat.js"></script>
+</body>
+</html>

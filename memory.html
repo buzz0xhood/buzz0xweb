@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory | HUDA ACHMAD</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+    :root {
+        --bg: #ffffff;
+        --bg-alt: #f5f5f7;
+        --text: #1d1d1f;
+        --text-secondary: #86868b;
+        --accent: #0071e3;
+        --border: #d2d2d7;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 52px;
+        background: rgba(255,255,255,0.8);
+        backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    
+    .nav-content {
+        width: 100%;
+        max-width: 980px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+    }
+    
+    .nav-brand {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--text);
+    }
+    
+    .hero {
+        padding: 130px 22px 40px;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+        color: var(--text-secondary);
+    }
+    
+    .section {
+        padding: 40px 22px 60px;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        font-size: 21px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+    
+    .memory-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+    }
+    
+    .memory-card {
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 20px;
+        border: 1px solid var(--border);
+    }
+    
+    .memory-card-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-bottom: 12px;
+    }
+    
+    .memory-card-content {
+        font-size: 14px;
+        color: var(--text);
+    }
+    
+    footer {
+        padding: 40px 22px;
+        text-align: center;
+        background: var(--bg-alt);
+    }
+    
+    footer p {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="nav-brand">HUDA ACHMAD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="memory.html" class="active">Memory</a></li>
+                <li><a href="archive.html">Archive</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">Memory</h1>
+            <p class="hero-subtitle">Long-term knowledge and insights</p>
+        </section>
+
+        <section class="section">
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <div class="memory-card-title">Identity</div>
+                    <div class="memory-card-content">
+                        HUDA ACHMAD — building a Personal Intelligence System using AI as the core engine.
+                        Focus on compounding knowledge over time.
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-card-title">Core System</div>
+                    <div class="memory-card-content">
+                        HUDA W/ AI transforms every conversation into structured intelligence:
+                        Priority levels, Dashboard-ready output, Intelligence Signals.
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-card-title">Design</div>
+                    <div class="memory-card-content">
+                        Apple-inspired minimal design. White background, black text.
+                        Navigation: Dashboard | Projects | Memory | Archive.
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-card-title">Active Since</div>
+                    <div class="memory-card-content">
+                        April 13, 2026 — Started with Solana trading research.
+                        Evolved into Personal Intelligence System project.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>HUDA ACHMAD — Personal Intelligence System</p>
+    </footer>
+</body>
+</html>

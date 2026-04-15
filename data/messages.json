@@ -1,0 +1,114 @@
+[
+    {
+        "id": "msg001",
+        "date": "2026-04-15",
+        "timestamp": "2026-04-15T05:52:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "sub-agents",
+        "content": "Ok let's focus on 1 thing, build the website until it's LIVE, i want to see results now"
+    },
+    {
+        "id": "msg002",
+        "date": "2026-04-15",
+        "timestamp": "2026-04-15T05:53:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "sub-agents",
+        "content": "Oke Sir! Mari kita focus ke website. Saya sudah ada buzzweb structure + sub-agents plan. Mari saya spawn coding agent untuk build yang premium, dark theme dengan reference Jitter + Sofi aesthetic."
+    },
+    {
+        "id": "msg003",
+        "date": "2026-04-15",
+        "timestamp": "2026-04-15T05:54:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "website-design",
+        "content": "some reference: jitter.video, sofihealth.com, silosilosilo.com, flowninja.com, apple.com. tambahan fitur spesifik: chatbot with you"
+    },
+    {
+        "id": "msg004",
+        "date": "2026-04-15",
+        "timestamp": "2026-04-15T06:01:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "website-design",
+        "content": "can you suggest for me, if any other tweak we need?"
+    },
+    {
+        "id": "msg005",
+        "date": "2026-04-15",
+        "timestamp": "2026-04-15T06:02:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "website-design",
+        "content": "High Impact: Search bar, last updated timestamp, keyboard shortcuts, sitemap.xml + robots.txt, Open Graph meta tags. Nice to Have: PWA manifest, back to top button, copy message link, dark/light toggle, print stylesheet. Chat extras: Chat history persistence, typing indicator, markdown rendering"
+    },
+    {
+        "id": "msg006",
+        "date": "2026-04-14",
+        "timestamp": "2026-04-14T14:30:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "sub-agents",
+        "content": "Lets create sub-agents for different tasks"
+    },
+    {
+        "id": "msg007",
+        "date": "2026-04-14",
+        "timestamp": "2026-04-14T14:31:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "sub-agents",
+        "content": "Perfect! Sub-agents approach will help us parallelize work. Let me create: 1. buzzweb - Website/archive specialist, 2. buzzpoly - Polymarket analysis & trading bot, 3. buzzbiz - Business analysis & profit generation"
+    },
+    {
+        "id": "msg008",
+        "date": "2026-04-14",
+        "timestamp": "2026-04-14T15:15:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "sub-agents",
+        "content": "Sub-agents created successfully: buzzweb, buzzpoly, buzzbiz"
+    },
+    {
+        "id": "msg009",
+        "date": "2026-04-14",
+        "timestamp": "2026-04-14T16:00:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "lst-yield",
+        "content": "Good. Now lets focus on Liquid Staking Yield research"
+    },
+    {
+        "id": "msg010",
+        "date": "2026-04-14",
+        "timestamp": "2026-04-14T16:01:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "lst-yield",
+        "content": "LST Yield Research: JitoSOL ~5-7%, mSOL ~4-6%, bSOL ~3-5%, stSOL ~3-5%, BlazeStake ~4-6%. JitoSOL paling high yield tapi juga more complex."
+    },
+    {
+        "id": "msg011",
+        "date": "2026-04-13",
+        "timestamp": "2026-04-13T10:00:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "solana-trading-bot",
+        "content": "Setup AI Trading Agent for Solana"
+    },
+    {
+        "id": "msg012",
+        "date": "2026-04-13",
+        "timestamp": "2026-04-13T10:01:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "solana-trading-bot",
+        "content": "Project structure created at solana-trading-agent/. Core files: main.py, scanner.py, executor.py, wallet.py, notifier.py. DexScreener scanner ready with red/green flags detection."
+    },
+    {
+        "id": "msg013",
+        "date": "2026-04-13",
+        "timestamp": "2026-04-13T11:30:00+08:00",
+        "sender": "buzz0xhood",
+        "topic": "solana-trading-bot",
+        "content": "Research FOMO app - how to get wallet addresses from top traders"
+    },
+    {
+        "id": "msg014",
+        "date": "2026-04-13",
+        "timestamp": "2026-04-13T11:31:00+08:00",
+        "sender": "buzz0xclaw",
+        "topic": "solana-trading-bot",
+        "content": "Research complete: FOMO is mobile-only app, no public web/API. Alternative: Use DexScreener trending + GMGN.ai for smart money tracking. Jupiter for bot execution, GMGN for manual UI."
+    }
+]

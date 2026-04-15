@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | HUDA W/ AI</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🤝</span>
+            <span class="brand-text">HUDA W/ AI</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+            <li><a href="topics.html"><i class="fas fa-folder"></i> Topics</a></li>
+            <li><a href="analytics.html" class="active"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="chat.html" class="nav-chat"><i class="fas fa-comment"></i> Chat</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleMobileNav()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <header class="page-header">
+        <h1><i class="fas fa-chart-line"></i> Analytics</h1>
+        <p>Conversation insights and engagement metrics</p>
+        <p class="last-updated">Last updated: April 15, 2026 06:00 AM</p>
+    </header>
+
+    <main class="analytics-container">
+        <!-- Date Range Selector -->
+        <div class="date-selector" style="margin-bottom: 24px;">
+            <button class="date-btn active" onclick="setDateRange('7d', this)">Last 7 Days</button>
+            <button class="date-btn" onclick="setDateRange('14d', this)">Last 14 Days</button>
+            <button class="date-btn" onclick="setDateRange('all', this)">All Time</button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid" style="margin-bottom: 40px;">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">247</span>
+                    <span class="stat-label">Total Messages</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Active Days</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">82</span>
+                    <span class="stat-label">Avg Messages/Day</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-folder"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">6</span>
+                    <span class="stat-label">Topics Covered</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="analytics-grid">
+            <!-- Message Volume Chart -->
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-area"></i> Message Volume</h3>
+                <div class="chart-container">
+                    <canvas id="messageVolumeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Topics Distribution Chart -->
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-pie"></i> Topics Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="topicsDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagement Stats -->
+        <div class="chart-card" style="margin-top: 24px;">
+            <h3><i class="fas fa-heart"></i> Engagement Metrics</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--accent-primary);">14</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">Key Decisions</div>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--gains);">7</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">Tasks Completed</div>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--warning);">6</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">In Progress</div>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--text-muted);">8</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">Pending Tasks</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Heatmap Placeholder -->
+        <div class="chart-card" style="margin-top: 24px;">
+            <h3><i class="fas fa-calendar"></i> Activity Timeline</h3>
+            <div id="activityHeatmap" style="display: flex; gap: 4px; flex-wrap: wrap; margin-top: 20px;">
+                <!-- Generated by JS -->
+            </div>
+            <div style="display: flex; gap: 16px; margin-top: 16px; font-size: 12px; color: var(--text-muted);">
+                <span><span style="color: var(--gains);">●</span> High activity</span>
+                <span><span style="color: var(--accent-primary);">●</span> Medium</span>
+                <span><span style="color: var(--text-muted);">●</span> Low/No activity</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>HUDA W/ AI · Built with ❤️ by HUDA W/ AI</p>
+            <p class="footer-meta">Session: April 13-15, 2026 · All rights reserved</p>
+        </div>
+    </footer>
+
+    <div class="floating-chat" onclick="openChatModal()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-content">
+            <div class="chat-modal-header">
+                <span><i class="fas fa-robot"></i> Chat with HUDA W/ AI</span>
+                <button class="chat-close" onclick="closeChatModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-modal-body">
+                <iframe src="chat.html" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/analytics.js"></script>
+    <script>
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initMessageVolumeChart();
+            initTopicsDistributionChart();
+            generateActivityHeatmap();
+        });
+
+        function setDateRange(range, btn) {
+            document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            // Would re-render charts with filtered data
+        }
+    </script>
+</body>
+</html>

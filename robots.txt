@@ -1,0 +1,14 @@
+# Solana Trading Archive - robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://buzz0xclaw.com/sitemap.xml
+
+# Crawl-delay (optional, be nice to shared hosting)
+Crawl-delay: 1
+
+# Block access to sensitive directories (if any future backend)
+# Disallow: /admin/
+# Disallow: /private/
