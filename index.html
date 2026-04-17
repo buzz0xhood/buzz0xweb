@@ -133,7 +133,7 @@ body {
 /* Header */
 header {
   position: fixed;
-  top: 0;
+  top: 36px;
   left: 0;
   right: 0;
   height: 56px;
@@ -182,7 +182,7 @@ nav {
 .nav-dropdown {
   display: none;
   position: absolute;
-  top: 56px;
+  top: 92px;
   left: 0;
   right: 0;
   background: var(--surface);
@@ -276,9 +276,62 @@ nav a.active {
   color: var(--text-3);
 }
 
+/* Crypto Ticker */
+.crypto-ticker {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  height: 36px;
+  overflow: hidden;
+  position: relative;
+}
+
+.crypto-ticker-inner {
+  display: flex;
+  gap: 32px;
+  padding: 0 24px;
+  height: 100%;
+  align-items: center;
+  animation: tickerScroll 40s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.crypto-ticker-inner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticker-item .symbol {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ticker-item .price {
+  color: var(--text-2);
+}
+
+.ticker-item .change {
+  font-size: 10px;
+}
+
+.ticker-item .change.up { color: var(--green); }
+.ticker-item .change.down { color: #ff453a; }
+
 /* Main */
 main {
-  padding-top: 80px;
+  padding-top: 128px;
   padding-bottom: 80px;
 }
 
@@ -930,6 +983,13 @@ footer p {
 
 <div class="bg-grid"></div>
 
+<!-- Crypto Ticker -->
+<div class="crypto-ticker" id="cryptoTicker">
+  <div class="crypto-ticker-inner" id="cryptoTickerInner">
+    <span class="ticker-item"><span class="symbol">Loading...</span></span>
+  </div>
+</div>
+
 <header>
   <div class="container">
     <div class="logo">BUZZ0XHOOD <span>/ Personal Intelligence</span></div>
@@ -1014,17 +1074,6 @@ footer p {
         </div>
       </div>
       
-      <!-- Crypto Prices -->
-      <div class="section">
-        <div class="section-header">
-          <span class="section-title">Crypto Markets</span>
-          <span class="section-count">Top 10</span>
-        </div>
-        <div class="crypto-grid" id="cryptoGrid">
-          <div class="crypto-loading">Loading prices...</div>
-        </div>
-      </div>
-      
       <!-- Data Sources -->
       <div class="section">
         <div class="section-header">
@@ -1032,8 +1081,24 @@ footer p {
           <span class="section-count">Click to explore</span>
         </div>
         <div class="data-sources-grid">
-          <a href="https://arkm.com/" target="_blank" class="data-source-card">
+          <a href="https://www.tradingview.com/" target="_blank" class="data-source-card">
             <div class="data-source-icon">📊</div>
+            <div class="data-source-info">
+              <h3>TradingView</h3>
+              <p>Charts, analysis & trading ideas</p>
+            </div>
+            <span class="data-source-arrow">→</span>
+          </a>
+          <a href="https://www.coingecko.com/" target="_blank" class="data-source-card">
+            <div class="data-source-icon">🪙</div>
+            <div class="data-source-info">
+              <h3>CoinGecko</h3>
+              <p>Price tracking & market data</p>
+            </div>
+            <span class="data-source-arrow">→</span>
+          </a>
+          <a href="https://arkm.com/" target="_blank" class="data-source-card">
+            <div class="data-source-icon">🔍</div>
             <div class="data-source-info">
               <h3>Arkham</h3>
               <p>On-chain intelligence & wallet tracking</p>
@@ -1231,6 +1296,7 @@ footer p {
         <p>Every discussion from first contact to now. Chronological. Complete.</p>
       </div>
       
+      <div id="archive-content">
       <!-- APRIL 11, 2026 -->
       <div class="date-group">
         <div class="date-header">April 11, 2026 — Saturday</div>
@@ -1711,6 +1777,8 @@ footer p {
         </div>
       </div>
       
+      </div>
+      
     </section>
     
     <footer>
@@ -1758,29 +1826,44 @@ function showSection(name) {
   document.getElementById('archive-section').style.display = 'none';
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
   document.querySelectorAll('.nav-dropdown a').forEach(a => a.classList.remove('active'));
+  
+  if (name === 'archive') {
+    const archiveContent = document.getElementById('archive-content');
+    const groups = archiveContent.querySelectorAll('.date-group');
+    archiveContent.innerHTML = '';
+    for (let i = groups.length - 1; i >= 0; i--) {
+      archiveContent.appendChild(groups[i]);
+    }
+  }
+  
   document.getElementById(name + '-section').style.display = 'block';
   event.target.classList.add('active');
   document.getElementById('navDropdown').classList.remove('open');
   document.getElementById('navToggle').classList.remove('open');
 }
 
-// Crypto Prices
+// Crypto Ticker
 async function fetchCryptoPrices() {
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h');
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h');
     const data = await res.json();
-    const grid = document.getElementById('cryptoGrid');
-    grid.innerHTML = data.map(coin => `
-      <div class="crypto-item">
-        <div class="crypto-symbol">${coin.symbol.toUpperCase()}</div>
-        <div class="crypto-price">$${coin.current_price.toLocaleString()}</div>
-        <div class="crypto-change ${coin.price_change_percentage_24h >= 0 ? 'up' : 'down'}">
-          ${coin.price_change_percentage_24h >= 0 ? '▲' : '▼'} ${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
-        </div>
-      </div>
+    const tickerInner = document.getElementById('cryptoTickerInner');
+    
+    // Build ticker items (duplicate for seamless scroll)
+    const items = data.slice(0, 20).map(coin => `
+      <span class="ticker-item">
+        <span class="symbol">${coin.symbol.toUpperCase()}</span>
+        <span class="price">$${coin.current_price.toLocaleString()}</span>
+        <span class="change ${coin.price_change_percentage_24h >= 0 ? 'up' : 'down'}">
+          ${coin.price_change_percentage_24h >= 0 ? '▲' : '▼'}${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
+        </span>
+      </span>
     `).join('');
+    
+    // Duplicate for seamless loop
+    tickerInner.innerHTML = items + items;
   } catch (e) {
-    document.getElementById('cryptoGrid').innerHTML = '<div class="crypto-loading">Price data unavailable</div>';
+    document.getElementById('cryptoTickerInner').innerHTML = '<span class="ticker-item"><span class="symbol">Data unavailable</span></span>';
   }
 }
 fetchCryptoPrices();
